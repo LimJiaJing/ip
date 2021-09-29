@@ -50,6 +50,9 @@ public class UserInterface {
             case DELETE:
                 TaskManager.deleteTask(userInput);
                 return true;
+            case FIND:
+                TaskManager.findTaskWithSubstring(userInput);
+                return true;
             case BYE:
                 return false;
             default:

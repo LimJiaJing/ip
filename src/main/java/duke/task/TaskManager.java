@@ -110,6 +110,31 @@ public class TaskManager {
         updateFile();
     }
 
+    public static void findTaskWithSubstring(String userInput){
+        int startIndexOfTargetSubstring = userInput.indexOf(' ') + 1;
+        String targetSubString = userInput.substring(startIndexOfTargetSubstring);
+        ArrayList<Todo> listOfTasksWithSubstring = new ArrayList<Todo>();
+        for (Todo task:tasks){
+            if (task.getName().contains(targetSubString)){
+                listOfTasksWithSubstring.add(task);
+            }
+        }
+        printTasksWithSubstring(listOfTasksWithSubstring);
+    }
+
+    private static void printTasksWithSubstring(ArrayList<Todo> listOfTasks){
+        if (listOfTasks.size() == 0) {
+            System.out.println("\tNo tasks with target substring");
+            return;
+        }
+        System.out.println("\tHere are the matching tasks in your list:");
+        int count = 1;
+        for (Todo task : listOfTasks) {
+            System.out.println("\t"+count+ "." + task);
+            count++;
+        }
+    }
+
     private static void printTaskAddedConfirmation(Todo task) {
         System.out.println("\tGot it. I've added this task:");
         System.out.println("\t\t" + task);
